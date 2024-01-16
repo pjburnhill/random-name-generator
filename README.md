@@ -9,6 +9,7 @@ The Random Name Generator is a Python script designed to generate random names b
 - Generate random names by combining a specified number of words.
 - Uses 'EFF's Long Wordlist' by default, with support for both local JSON wordlists and remote wordlists via URLs.
 - Customizable word count and dividing character in generated names.
+- Customizable number of names to generate.
 - Includes a test wordlist for quick setup and testing.
 
 ## Getting Started
@@ -32,12 +33,13 @@ cd random-name-generator
 Run the script with Python, optionally providing parameters for customization:
 
 ```bash
-python random_name_generator.py [--num-words NUM_WORDS] [--dividing-character DIVIDING_CHARACTER] [--wordlist WORDLIST]
+python random_name_generator.py [--num-words NUM_WORDS] [--dividing-character DIVIDING_CHARACTER] [--wordlist WORDLIST] [--num-names NUM_NAMES]
 ```
 
-- `--num-words`: Number of words to use in the generated name (default: 3)
+- `--num-words`: Number of words to use in each generated name (default: 3)
 - `--dividing-character`: Character to use for dividing words in the name (default: '-')
 - `--wordlist`: Path to a local JSON file or URL of the wordlist (default: EFF wordlist)
+- `--num-names`: Number of names to generate (default: 1)
 
 ### Test Wordlist
 

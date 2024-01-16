@@ -38,11 +38,14 @@ def generate_random_name(word_list, num_words, dividing_character):
 def main():
     num_words = 3
     dividing_character = "-"
+    num_names = 1
     input_wordlist = "https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt"
 
     parser = argparse.ArgumentParser(description="Generate random names.")
     parser.add_argument("--num-words", type=int,
-                        help="Number of words to use (default: 3)")
+                        help="Number of words to use in each name (default: 3)")
+    parser.add_argument("--num-names", type=int,
+                        help="Number of names to generate (default: 1)")
     parser.add_argument("--dividing-character", type=str,
                         help="Dividing character (default: '-')")
     parser.add_argument("--wordlist", type=str,
@@ -51,6 +54,8 @@ def main():
 
     if args.num_words:
         num_words = args.num_words
+    if args.num_names:
+        num_names = args.num_names
     if args.dividing_character:
         dividing_character = args.dividing_character
     if args.wordlist:
@@ -60,9 +65,11 @@ def main():
         word_list = download_wordlist(input_wordlist)
         if not word_list:
             raise ValueError("Wordlist is empty or unavailable")
-        random_name = generate_random_name(
-            word_list, num_words, dividing_character)
-        print("Generated Random Name:", random_name)
+
+        for _ in range(num_names):
+            random_name = generate_random_name(
+                word_list, num_words, dividing_character)
+            print(random_name)
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
